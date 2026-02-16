@@ -18,30 +18,20 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'Hiragino Sans','Noto Sans JP',sans-serif;background:var(--bg);color:var(--tx);-webkit-tap-highlight-color:transparent;overflow-x:hidden;font-size:14px;line-height:1.5}
 button{font-family:inherit}
-
 .hd{background:linear-gradient(135deg,#1a1040 0%,#0f1419 100%);padding:14px 16px;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:50}
 .hd h1{font-size:16px;font-weight:900;letter-spacing:-.3px}
 .hd h1 b{color:var(--ac)}
 .hd p{font-size:10px;color:var(--dim);margin-top:1px}
-
 .wrap{padding:12px 12px 80px}
-
-/* tabs */
 .tabs{display:flex;gap:6px;margin-bottom:14px;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .tab{flex-shrink:0;padding:8px 16px;border-radius:20px;font-size:12px;font-weight:700;border:1px solid var(--border);background:var(--card);color:var(--dim);cursor:pointer;transition:.2s}
 .tab.on{background:var(--ac);color:#fff;border-color:var(--ac)}
-
-/* cards */
 .cd{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px}
 .cd-t{font-size:11px;font-weight:700;color:var(--dim);letter-spacing:.5px;margin-bottom:10px;text-transform:uppercase}
-
-/* date */
 .drow{display:flex;gap:8px;align-items:center;margin-bottom:12px}
 .drow input[type=date]{flex:1;background:var(--card);color:var(--tx);border:1px solid var(--border);border-radius:8px;padding:10px;font-size:15px;font-family:inherit;-webkit-appearance:none}
 .go{background:var(--ac);color:#fff;border:none;border-radius:8px;padding:10px 14px;font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap}
 .go:active{transform:scale(.96)}
-
-/* forecast row (horizontal scroll) */
 .frow{display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px;scroll-snap-type:x mandatory}
 .frow::-webkit-scrollbar{display:none}
 .fday{flex:0 0 calc(33.33% - 6px);scroll-snap-align:start;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 8px;text-align:center;min-width:110px}
@@ -52,12 +42,13 @@ button{font-family:inherit}
 .fday .dt{font-size:10px;color:var(--dim)}
 .fday .wi{font-size:30px;margin:6px 0;line-height:1}
 .fday select{width:100%;background:var(--bg);color:var(--tx);border:1px solid var(--border);border-radius:6px;padding:6px 2px;font-size:11px;font-family:inherit;text-align:center;-webkit-appearance:none;appearance:none}
-
-/* big button */
+.mode-sel{display:flex;gap:6px;margin-bottom:10px}
+.mode-btn{flex:1;padding:10px 6px;border-radius:8px;font-size:11px;font-weight:700;border:2px solid var(--border);background:var(--card);color:var(--dim);cursor:pointer;text-align:center;transition:.2s;line-height:1.3}
+.mode-btn.on{color:#fff}
+.mode-btn .pct{font-size:18px;font-weight:900;display:block;margin-bottom:2px}
+.mode-btn .mlabel{font-size:9px;opacity:.7}
 .bigbtn{display:block;width:100%;background:linear-gradient(135deg,var(--ac),#ea580c);color:#fff;border:none;border-radius:10px;padding:14px;font-size:16px;font-weight:900;margin:14px 0;cursor:pointer;letter-spacing:.5px}
 .bigbtn:active{transform:scale(.97)}
-
-/* result summary strip */
 .sstrip{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
 .sbox{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px;text-align:center}
 .sbox .sv{font-size:22px;font-weight:900;letter-spacing:-.5px}
@@ -67,8 +58,16 @@ button{font-family:inherit}
 .sbox.f .sv{color:var(--fish)}
 .sbox.s .sv{color:var(--sake)}
 .sbox.fd .sv{color:var(--food)}
-
-/* result day cards */
+.cost-badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:11px;font-weight:900;letter-spacing:.3px}
+.cost-badge.red{background:rgba(239,68,68,.15);color:var(--red)}
+.cost-badge.yellow{background:rgba(234,179,8,.15);color:var(--sake)}
+.cost-badge.green{background:rgba(34,197,94,.15);color:var(--food)}
+.comp-bar{margin:12px 0;padding:12px;background:rgba(255,255,255,.03);border-radius:8px}
+.comp-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;font-size:11px}
+.comp-row:last-child{margin:0}
+.comp-row .clbl{width:60px;color:var(--dim);flex-shrink:0}
+.comp-row .cbar{flex:1;height:16px;border-radius:4px;overflow:hidden;background:rgba(255,255,255,.04)}
+.comp-row .cfill{height:100%;border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-size:9px;font-weight:700;color:#fff;transition:.4s}
 .rrow{display:flex;flex-direction:column;gap:8px}
 .rday{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;display:flex;align-items:center;gap:12px}
 .rday.off{opacity:.35}
@@ -86,160 +85,225 @@ button{font-family:inherit}
 .rp b{font-weight:700}
 .df{background:var(--fish)}.ds{background:var(--sake)}.dfd{background:var(--food)}
 .cf{color:var(--fish)}.cs{color:var(--sake)}.cfd{color:var(--food)}
-
-/* Analysis tab */
+.tax-note{font-size:10px;color:var(--dim);padding:8px 10px;background:rgba(255,255,255,.03);border-radius:6px;margin-top:10px;line-height:1.6}
 .arow{display:flex;align-items:center;padding:10px 0;border-bottom:1px solid var(--border)}
 .arow:last-child{border:none}
 .arow .al{flex:1;font-size:13px}
 .arow .av{font-size:15px;font-weight:900;min-width:70px;text-align:right}
 .abr{height:6px;border-radius:3px;margin-top:4px}
-
 .kv{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px}
 .kv:last-child{border:none}
 .kv .k{color:var(--dim)}.kv .v{font-weight:700}
-
-/* finding */
 .find{background:rgba(249,115,22,.07);border:1px solid rgba(249,115,22,.2);border-radius:10px;padding:14px;margin-bottom:12px;font-size:13px;line-height:1.7}
 .find b{color:var(--ac)}
 .find .ft{font-size:11px;font-weight:900;color:var(--ac);margin-bottom:6px;letter-spacing:.5px}
-
-/* hide */
+.warn-box{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);border-radius:10px;padding:14px;margin-bottom:12px;font-size:13px;line-height:1.7}
+.warn-box b{color:var(--red)}
+.warn-box .wt{font-size:11px;font-weight:900;color:var(--red);margin-bottom:6px;letter-spacing:.5px}
+.ok-box{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.25);border-radius:10px;padding:14px;margin-bottom:12px;font-size:13px;line-height:1.7}
+.ok-box b{color:var(--food)}
 .hide{display:none}
 </style>
 </head>
 <body>
-
 <div class="hd">
   <h1>🏮 北海 <b>仕入れナビ</b></h1>
-  <p>週間天気 → 売上予測 → 最適仕入額（2025年365日学習モデル）</p>
+  <p>週間天気→売上予測→最適仕入額｜365日学習+1月請求実績v2</p>
 </div>
-
 <div class="wrap">
   <div class="tabs">
     <div class="tab on" onclick="showTab(0)">📊 予測</div>
     <div class="tab" onclick="showTab(1)">📈 分析</div>
-    <div class="tab" onclick="showTab(2)">⚙ モデル</div>
+    <div class="tab" onclick="showTab(2)">🐟 原価</div>
+    <div class="tab" onclick="showTab(3)">⚙ モデル</div>
   </div>
 
-  <!-- ===== TAB 0: PREDICTION ===== -->
+  <!-- TAB 0: PREDICTION -->
   <div id="tab0">
     <div class="drow">
       <input type="date" id="sd">
       <button class="go" onclick="genWeek()">表示</button>
     </div>
-
-    <div class="cd-t" style="margin-bottom:8px">① 天気予報を入力（横スクロール →）</div>
+    <div class="cd-t">① 天気予報を入力（横スクロール →）</div>
     <div class="frow" id="frow"></div>
-
+    <div class="cd-t" style="margin-top:14px">② 仕入れモード選択</div>
+    <div class="mode-sel" id="modeSel"></div>
+    <div id="modeDesc" style="font-size:11px;color:var(--dim);margin-bottom:8px;line-height:1.6"></div>
     <button class="bigbtn" onclick="calc()">🔮 売上予測＆仕入れ計算</button>
-
     <div id="res" class="hide">
+      <div id="costAlert"></div>
       <div class="cd-t">週間サマリー</div>
       <div class="sstrip" id="sstrip"></div>
-
+      <div id="compArea"></div>
       <div class="cd-t">日別 予測＆仕入れ推奨</div>
       <div class="rrow" id="rrow"></div>
-
-      <div style="margin-top:12px;padding:10px 12px;background:var(--card);border-radius:8px;font-size:11px;color:var(--dim);line-height:1.6">
-        💡 鮮魚＝売上×28%｜酒類＝売上×11%｜食材＝売上×10%<br>
+      <div class="tax-note">
+        💰 <b style="color:var(--tx)">消費税：</b>POS売上＝税込10%、食材＝税込8%、酒類＝税込10%。上記はすべて税込表示。<br>
         ⚠ 土曜の鮮魚は翌定休を考慮し−20%調整済
       </div>
     </div>
   </div>
 
-  <!-- ===== TAB 1: ANALYSIS ===== -->
+  <!-- TAB 1: ANALYSIS -->
   <div id="tab1" class="hide">
     <div class="find">
       <div class="ft">📊 365日分析の結論</div>
       <b>売上を決めるのは「曜日」。天候はほぼ無関係。</b><br>
-      金曜¥207K・土曜¥195K vs 火曜¥134K。<br>
-      気温との相関 r=0.024（ゼロ）。<br>
+      金曜¥207K・土曜¥195K vs 火曜¥134K。気温相関 r=0.024。<br>
       例外：<b>月曜の雪＝半額</b>、<b>金曜の大雨＝3割減</b>のみ。
     </div>
+    <div class="cd"><div class="cd-t">曜日別 平均売上</div><div id="dowList"></div></div>
+    <div class="cd"><div class="cd-t">時間帯別 構成比</div><div id="timeList"></div><div style="margin-top:8px;font-size:11px;color:var(--dim)">22時以降＝8.5%。閉店前倒しで年¥430万の人件費削減可能。</div></div>
+    <div class="cd"><div class="cd-t">天候の影響（曜日別）</div><div style="overflow-x:auto"><table style="width:100%;font-size:11px;border-collapse:collapse;white-space:nowrap"><thead><tr style="color:var(--dim);border-bottom:1px solid var(--border)"><th style="padding:6px;text-align:left">曜</th><th style="padding:6px;text-align:right">☀晴</th><th style="padding:6px;text-align:right">🌦小雨</th><th style="padding:6px;text-align:right">🌧大雨</th><th style="padding:6px;text-align:right">❄雪</th></tr></thead><tbody id="wtbl"></tbody></table></div></div>
+    <div class="cd"><div class="cd-t">月別売上（2025年実績）</div><div id="monList"></div></div>
+    <div class="cd"><div class="cd-t">売上との相関係数</div><div id="corrList"></div></div>
+    <div class="cd"><div class="cd-t">売上トップ5 / ワースト5</div><div id="rankList"></div></div>
+  </div>
 
-    <div class="cd">
-      <div class="cd-t">曜日別 平均売上</div>
-      <div id="dowList"></div>
+  <!-- TAB 2: COST STRUCTURE (REVISED) -->
+  <div id="tab2" class="hide">
+    <div class="warn-box">
+      <div class="wt">🐟 問題は一点集中：鮮魚原価</div>
+      原価率53%（業界30%の1.8倍）。<br>
+      <b>鮮魚だけで売上の30%を食っている。</b><br>
+      飲料（11%）・食材（11%）は実は適正範囲内。
     </div>
 
     <div class="cd">
-      <div class="cd-t">時間帯別 構成比</div>
-      <div id="timeList"></div>
-      <div style="margin-top:8px;font-size:11px;color:var(--dim)">22時以降＝全体の8.5%。閉店前倒しで年¥430万の人件費削減可能。</div>
+      <div class="cd-t">修正版 原価構造（税込/日）</div>
+      <div style="font-size:10px;color:var(--dim);margin-bottom:8px">白井酒店2026年1月請求書 + 11月仕入レシートから算出</div>
+      <div class="kv"><span class="k">🐟 鮮魚（魚市場）</span><span class="v" style="color:var(--red)">¥49,934 (30.5%) <span style="font-size:10px">← 元凶</span></span></div>
+      <div class="kv"><span class="k">🍶 飲料（白井酒店）</span><span class="v cf">¥17,737 (10.8%)</span></div>
+      <div class="kv"><span class="k">🥬 その他食材</span><span class="v cfd">¥18,519 (11.3%)</span></div>
+      <div class="kv" style="border-top:2px solid var(--ac)"><span class="k" style="color:var(--tx);font-weight:900">合計</span><span class="v" style="color:var(--ac);font-size:16px">¥86,190 (52.7%)</span></div>
+    </div>
+
+    <div class="ok-box">
+      <b>✅ 前回（67%）→ 今回（53%）に修正。</b><br>
+      11月の飲料¥50K/日は忘年会シーズンの先行仕入だった。<br>
+      1月の白井酒店請求（実額¥425,687/月）で再計算した結果、<br>
+      飲料の実態は<b>10.8%（適正範囲）</b>と判明。
     </div>
 
     <div class="cd">
-      <div class="cd-t">天候の影響（曜日別）</div>
-      <div style="overflow-x:auto">
-        <table style="width:100%;font-size:11px;border-collapse:collapse;white-space:nowrap">
-          <thead><tr style="color:var(--dim);border-bottom:1px solid var(--border)">
-            <th style="padding:6px;text-align:left">曜</th>
-            <th style="padding:6px;text-align:right">☀晴</th>
-            <th style="padding:6px;text-align:right">🌦小雨</th>
-            <th style="padding:6px;text-align:right">🌧大雨</th>
-            <th style="padding:6px;text-align:right">❄雪</th>
-          </tr></thead>
-          <tbody id="wtbl"></tbody>
-        </table>
+      <div class="cd-t">白井酒店 1月請求 内訳</div>
+      <div class="kv"><span class="k">メイン請求（税込）</span><span class="v">¥401,787</span></div>
+      <div class="kv"><span class="k">┗ 酒類 10%対象</span><span class="v">¥344,608</span></div>
+      <div class="kv"><span class="k">┗ ソフトドリンク 8%対象</span><span class="v">¥57,179</span></div>
+      <div class="kv"><span class="k">タップマルシェ直送</span><span class="v">¥23,900</span></div>
+      <div class="kv" style="border-top:1px solid var(--ac)"><span class="k" style="color:var(--tx)">合計（税込）</span><span class="v" style="color:var(--ac)">¥425,687</span></div>
+      <div style="font-size:11px;color:var(--dim);margin-top:6px">
+        ビール樽(20L)×14本 = ¥161,770（白井の38%）<br>
+        樽系合計 = ¥214,220（白井の50%）
       </div>
     </div>
 
     <div class="cd">
-      <div class="cd-t">月別売上（2025年実績）</div>
-      <div id="monList"></div>
+      <div class="cd-t">カテゴリ別 評価</div>
+      <div style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
+        <span style="font-size:13px">🐟 鮮魚 30.5%</span>
+        <span class="cost-badge red">異常：業界の2.5倍</span>
+      </div>
+      <div style="font-size:11px;color:var(--dim);padding:6px 0 10px;border-bottom:1px solid var(--border)">
+        居酒屋の食材原価目標12〜15%に対し30%超。<br>
+        刺身106品の縮小が唯一にして最大の改善策。
+      </div>
+      <div style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
+        <span style="font-size:13px">🍶 飲料 10.8%</span>
+        <span class="cost-badge green">適正範囲内</span>
+      </div>
+      <div style="font-size:11px;color:var(--dim);padding:6px 0 10px;border-bottom:1px solid var(--border)">
+        居酒屋の飲料原価目標10〜15%に対し10.8%。良好。<br>
+        ビール仕入先の見直しは不要。
+      </div>
+      <div style="padding:8px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between">
+        <span style="font-size:13px">🥬 食材他 11.3%</span>
+        <span class="cost-badge yellow">やや高い</span>
+      </div>
+      <div style="font-size:11px;color:var(--dim);padding:6px 0">
+        目標8〜10%に対しやや超過。<br>
+        高利益メニュー（枝豆・冷奴・漬物）の充実で改善可能。
+      </div>
     </div>
 
     <div class="cd">
-      <div class="cd-t">売上との相関係数</div>
-      <div id="corrList"></div>
+      <div class="cd-t">🎯 改善シナリオ（年間インパクト）</div>
+      <div style="padding:10px 0;border-bottom:1px solid var(--border)">
+        <div style="display:flex;justify-content:space-between;align-items:center"><span>現状</span><span class="cost-badge red">原価率 53%</span></div>
+        <div style="font-size:12px;color:var(--dim);margin-top:4px">年間仕入: ¥2,661万</div>
+      </div>
+      <div style="padding:10px 0;border-bottom:1px solid var(--border)">
+        <div style="display:flex;justify-content:space-between;align-items:center"><span>改善①：鮮魚半減</span><span class="cost-badge yellow">原価率 37%</span></div>
+        <div style="font-size:12px;color:var(--dim);margin-top:4px">鮮魚15% + 飲料11% + 食材11%</div>
+        <div style="font-size:14px;font-weight:900;color:var(--sake);margin-top:4px">→ 年¥803万の利益改善</div>
+      </div>
+      <div style="padding:10px 0">
+        <div style="display:flex;justify-content:space-between;align-items:center"><span>改善②：業界水準</span><span class="cost-badge green">原価率 30%</span></div>
+        <div style="font-size:12px;color:var(--dim);margin-top:4px">鮮魚12% + 飲料9% + 食材9%</div>
+        <div style="font-size:14px;font-weight:900;color:var(--food);margin-top:4px">→ 年¥1,155万の利益改善</div>
+      </div>
     </div>
 
     <div class="cd">
-      <div class="cd-t">売上トップ5 / ワースト5</div>
-      <div id="rankList"></div>
+      <div class="cd-t">🐟 鮮魚改善アクション（一点突破）</div>
+      <div style="font-size:12px;line-height:1.8;color:var(--dim)">
+        <b style="color:var(--red)">現状：刺身106品 → 原価率30%超</b><br><br>
+        <b style="color:var(--sake)">Step①（即時）鮮魚15%目標</b><br>
+        ・刺身メニューを20品以下に絞る<br>
+        ・盛り合わせを「本日のおすすめ3点盛」に一本化<br>
+        ・焼魚・煮魚（原価管理しやすい）を増やす<br>
+        ・仕入は「売れる量だけ」に徹底<br><br>
+        <b style="color:var(--food)">Step②（目標）鮮魚12%</b><br>
+        ・刺身5〜8品（看板メニューのみ残す）<br>
+        ・仕入先と価格交渉（ロット集約）<br>
+        ・廃棄率の管理（仕入れたものを使い切る）<br><br>
+        <b style="color:var(--tx)">飲料・食材は現状維持でOK。</b><br>
+        鮮魚を15%にするだけで原価率37%に到達。
+      </div>
     </div>
   </div>
 
-  <!-- ===== TAB 2: MODEL ===== -->
-  <div id="tab2" class="hide">
+  <!-- TAB 3: MODEL -->
+  <div id="tab3" class="hide">
     <div class="cd">
       <div class="cd-t">予測モデル仕様</div>
-      <div class="kv"><span class="k">モデル種別</span><span class="v">曜日×月×天候 階層型</span></div>
+      <div class="kv"><span class="k">モデル種別</span><span class="v">曜日×月×天候</span></div>
       <div class="kv"><span class="k">学習データ</span><span class="v">2025年 307営業日</span></div>
       <div class="kv"><span class="k">気象データ</span><span class="v">気象庁 白河 365日</span></div>
       <div class="kv"><span class="k">年間売上</span><span class="v" style="color:var(--ac)">¥50,214,540</span></div>
-      <div class="kv"><span class="k">営業日平均</span><span class="v">¥163,565</span></div>
-      <div class="kv"><span class="k">定休日</span><span class="v">日曜</span></div>
     </div>
     <div class="cd">
       <div class="cd-t">精度</div>
       <div class="kv"><span class="k">平均誤差率</span><span class="v">25.4%</span></div>
       <div class="kv"><span class="k">±20%以内</span><span class="v">55.2%</span></div>
       <div class="kv"><span class="k">±30%以内</span><span class="v" style="color:var(--food)">74.9%</span></div>
-      <div class="kv"><span class="k">最大影響因子</span><span class="v" style="color:var(--ac)">曜日 r=+0.473</span></div>
     </div>
     <div class="cd">
-      <div class="cd-t">仕入れ係数（実仕入レシートより）</div>
-      <div class="kv"><span class="k">🐟 鮮魚</span><span class="v cf">売上 × 28%</span></div>
-      <div class="kv"><span class="k">🍶 酒類</span><span class="v cs">売上 × 11%</span></div>
-      <div class="kv"><span class="k">🥬 その他食材</span><span class="v cfd">売上 × 10%</span></div>
-      <div class="kv"><span class="k">⚠ 土曜鮮魚</span><span class="v" style="color:var(--red)">−20%（翌定休）</span></div>
-    </div>
-    <div class="cd">
-      <div class="cd-t">予測ロジック</div>
-      <div style="font-size:12px;color:var(--dim);line-height:1.8">
-        予測売上 ＝ <b style="color:var(--tx)">曜日ベース</b> × <b style="color:var(--tx)">月係数</b> × <b style="color:var(--tx)">天候補正</b><br><br>
-        例）2月・金曜・大雨の場合<br>
-        ¥211,595 × 0.878 × 0.69 ＝ <b style="color:var(--ac)">¥128,180</b><br><br>
-        例）8月・土曜・晴れの場合<br>
-        ¥195,840 × 1.093 × 1.00 ＝ <b style="color:var(--ac)">¥213,953</b>
+      <div class="cd-t">原価データソース（v2更新）</div>
+      <div class="kv"><span class="k">鮮魚</span><span class="v">11月仕入レシート</span></div>
+      <div class="kv"><span class="k">飲料</span><span class="v" style="color:var(--food)">1月白井酒店請求書 ★</span></div>
+      <div class="kv"><span class="k">食材</span><span class="v">11月仕入レシート</span></div>
+      <div style="font-size:10px;color:var(--dim);margin-top:6px">
+        ★ v1では飲料28.3%（11月推定）→ v2で10.8%（1月実績）に修正。<br>
+        11月の飲料仕入は忘年会シーズンの先行仕入を含んでいた。
       </div>
+    </div>
+    <div class="cd">
+      <div class="cd-t">仕入れ係数（3モード比較）</div>
+      <table style="width:100%;font-size:11px;border-collapse:collapse">
+        <thead><tr style="color:var(--dim);border-bottom:1px solid var(--border)"><th style="padding:6px;text-align:left">項目</th><th style="padding:6px;text-align:center;color:var(--red)">現状53%</th><th style="padding:6px;text-align:center;color:var(--sake)">目標37%</th><th style="padding:6px;text-align:center;color:var(--food)">業界30%</th></tr></thead>
+        <tbody>
+          <tr style="border-bottom:1px solid var(--border)"><td style="padding:6px">🐟 鮮魚</td><td style="padding:6px;text-align:center;color:var(--red);font-weight:700">30.5%</td><td style="padding:6px;text-align:center">15%</td><td style="padding:6px;text-align:center">12%</td></tr>
+          <tr style="border-bottom:1px solid var(--border)"><td style="padding:6px">🍶 飲料</td><td style="padding:6px;text-align:center">10.8%</td><td style="padding:6px;text-align:center">11%</td><td style="padding:6px;text-align:center">9%</td></tr>
+          <tr style="border-bottom:1px solid var(--border)"><td style="padding:6px">🥬 その他</td><td style="padding:6px;text-align:center">11.3%</td><td style="padding:6px;text-align:center">11%</td><td style="padding:6px;text-align:center">9%</td></tr>
+          <tr><td style="padding:6px;font-weight:900">合計</td><td style="padding:6px;text-align:center;color:var(--red);font-weight:900">52.7%</td><td style="padding:6px;text-align:center;color:var(--sake);font-weight:900">37.0%</td><td style="padding:6px;text-align:center;color:var(--food);font-weight:900">30.0%</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
 
 <script>
-// ===== MODEL =====
 const M={
   base:{月:155780,火:126785,水:131680,木:148540,金:211595,土:195840,日:0},
   mf:{
@@ -255,29 +319,38 @@ const M={
     水:{d:1,l:1.02,h:.80,s:.90},木:{d:1,l:.98,h:.92,s:.99},
     金:{d:1,l:1.14,h:.69,s:.92},土:{d:1,l:1.08,h:.93,s:.75}
   },
-  pr:{fish:.28,drink:.11,food:.10}
+  // v2: 1月白井酒店請求書で修正
+  modes:{
+    current:{label:'現状',pct:53,fish:.305,drink:.108,food:.113,color:'#ef4444',badge:'red',
+      desc:'⚠ 鮮魚30%が元凶。飲料・食材は適正範囲内。'},
+    target37:{label:'鮮魚半減',pct:37,fish:.15,drink:.11,food:.11,color:'#eab308',badge:'yellow',
+      desc:'鮮魚を30%→15%に。刺身20品以下に絞る。飲料・食材は現状維持。'},
+    target30:{label:'業界水準',pct:30,fish:.12,drink:.09,food:.09,color:'#22c55e',badge:'green',
+      desc:'刺身5〜8品。焼酎推し。高利益メニュー中心。居酒屋として健全。'}
+  }
 };
+let curMode='target37';
 const DN=['日','月','火','水','木','金','土'];
 const WO=[{v:'d',l:'☀ 晴/曇',i:'☀'},{v:'l',l:'🌦 小雨',i:'🌦'},{v:'h',l:'🌧 大雨',i:'🌧'},{v:'s',l:'❄ 雪',i:'❄'}];
 
-function pred(dow,mo,w){
-  if(dow==='日')return 0;
-  return Math.round((M.base[dow]||0)*(M.mf[dow]||{})[mo]||1)*((M.wf[dow]||{})[w]||1);
-}
+function pred(dow,mo,w){if(dow==='日')return 0;return Math.round((M.base[dow]||0)*((M.mf[dow]||{})[mo]||1)*((M.wf[dow]||{})[w]||1))}
 function yen(n){return n?'¥'+n.toLocaleString():'—'}
 function yenK(n){return n>=10000?'¥'+(n/10000).toFixed(1)+'万':n?'¥'+Math.round(n/1000)+'K':'—'}
 
-// Tab
-function showTab(n){
-  document.querySelectorAll('.tab').forEach((t,i)=>{t.classList.toggle('on',i===n)});
-  for(let i=0;i<3;i++)document.getElementById('tab'+i).classList.toggle('hide',i!==n);
-}
+function showTab(n){document.querySelectorAll('.tab').forEach((t,i)=>{t.classList.toggle('on',i===n)});for(let i=0;i<4;i++)document.getElementById('tab'+i).classList.toggle('hide',i!==n)}
 
-// Week generation
-function getNextMon(){
-  const d=new Date();const diff=d.getDay()===0?1:d.getDay()===1?0:8-d.getDay();
-  d.setDate(d.getDate()+diff);return d;
+function initModes(){
+  const sel=document.getElementById('modeSel');sel.innerHTML='';
+  Object.entries(M.modes).forEach(([k,m])=>{
+    const on=k===curMode;
+    sel.innerHTML+=`<div class="mode-btn${on?' on':''}" style="${on?'border-color:'+m.color+';background:'+m.color+'22;color:'+m.color:''}" onclick="setMode('${k}')"><span class="pct" style="${on?'color:'+m.color:''}">${m.pct}%</span>${m.label}<div class="mlabel">${k==='current'?'原価率':'目標原価率'}</div></div>`;
+  });
+  document.getElementById('modeDesc').innerHTML=`<span style="color:${M.modes[curMode].color}">●</span> ${M.modes[curMode].desc}`;
 }
+function setMode(k){curMode=k;initModes()}
+
+function getNextMon(){const d=new Date();const diff=d.getDay()===0?1:d.getDay()===1?0:8-d.getDay();d.setDate(d.getDate()+diff);return d}
+
 function genWeek(){
   const inp=document.getElementById('sd');
   const s=inp.value?new Date(inp.value+'T00:00:00'):getNextMon();
@@ -290,11 +363,8 @@ function genWeek(){
     div.className='fday'+(fs?' hi':'')+(off?' off':'');
     div.dataset.dow=dow;div.dataset.mo=mo;
     div.dataset.ds=d.getFullYear()+'/'+String(mo).padStart(2,'0')+'/'+String(d.getDate()).padStart(2,'0');
-    if(off){
-      div.innerHTML=`<div class="dt">${dt}</div><div class="dow" style="color:var(--mt)">${dow}</div><div class="wi" style="opacity:.3">🚫</div><div style="font-size:10px;color:var(--mt)">定休日</div>`;
-    }else{
-      div.innerHTML=`<div class="dt">${dt}</div><div class="dow${fs?' fs':''}">${dow}</div><div class="wi" id="wi${i}">☀</div><select id="ws${i}" onchange="document.getElementById('wi${i}').textContent=WO.find(o=>o.v===this.value).i">${WO.map(o=>`<option value="${o.v}">${o.l}</option>`).join('')}</select>`;
-    }
+    if(off){div.innerHTML=`<div class="dt">${dt}</div><div class="dow" style="color:var(--mt)">${dow}</div><div class="wi" style="opacity:.3">🚫</div><div style="font-size:10px;color:var(--mt)">定休日</div>`}
+    else{div.innerHTML=`<div class="dt">${dt}</div><div class="dow${fs?' fs':''}">${dow}</div><div class="wi" id="wi${i}">☀</div><select id="ws${i}" onchange="document.getElementById('wi${i}').textContent=WO.find(o=>o.v===this.value).i">${WO.map(o=>`<option value="${o.v}">${o.l}</option>`).join('')}</select>`}
     fr.appendChild(div);
   }
   document.getElementById('res').classList.add('hide');
@@ -302,95 +372,67 @@ function genWeek(){
 
 function calc(){
   const days=document.querySelectorAll('.fday');
-  let wT=0,wF=0,wD=0,wFd=0;const results=[];
+  const md=M.modes[curMode],mc=M.modes.current;
+  let wT=0,wF=0,wD=0,wFd=0,cF=0,cD=0,cFd=0;
+  const results=[];
   days.forEach((el,i)=>{
     const dow=el.dataset.dow,mo=+el.dataset.mo,ds=el.dataset.ds;
-    const sel=document.getElementById('ws'+i);
-    const w=sel?sel.value:'d';
-    const p=pred(dow,mo,w);
-    const isSat=dow==='土';
-    const fish=Math.round(p*M.pr.fish*(isSat?.8:1));
-    const drink=Math.round(p*M.pr.drink);
-    const food=Math.round(p*M.pr.food);
+    const sel=document.getElementById('ws'+i);const w=sel?sel.value:'d';
+    const p=pred(dow,mo,w);const isSat=dow==='土';const fa=isSat?.8:1;
+    const fish=Math.round(p*md.fish*fa),drink=Math.round(p*md.drink),food=Math.round(p*md.food);
     wT+=p;wF+=fish;wD+=drink;wFd+=food;
+    cF+=Math.round(p*mc.fish*fa);cD+=Math.round(p*mc.drink);cFd+=Math.round(p*mc.food);
     results.push({dow,mo,ds,w,p,fish,drink,food,off:dow==='日'});
   });
-  // Summary
+  const wPur=wF+wD+wFd,cPur=cF+cD+cFd,saving=cPur-wPur;
+
+  const ca=document.getElementById('costAlert');
+  if(curMode==='current'){ca.innerHTML=`<div class="warn-box"><div class="wt">⚠ 現状モード（原価率53%）</div>鮮魚30%の赤字構造を再現中。<b>鮮魚半減(37%)</b> モードへの切替を推奨。</div>`}
+  else if(saving>0){ca.innerHTML=`<div class="find"><div class="ft">💰 ${md.label}モード(${md.pct}%) 適用効果</div>現状(53%)比で今週 <b>−${yen(saving)}</b> の仕入削減<br>年間換算: <b style="font-size:16px">約¥${Math.round(saving*52/10000)}万の利益改善</b></div>`}
+  else{ca.innerHTML=''}
+
   document.getElementById('sstrip').innerHTML=`
-    <div class="sbox t1"><div class="sv">${yenK(wT)}</div><div class="sl">週間予測売上</div></div>
-    <div class="sbox f"><div class="sv">${yen(wF)}</div><div class="sl">🐟 鮮魚仕入</div></div>
-    <div class="sbox s"><div class="sv">${yen(wD)}</div><div class="sl">🍶 酒類仕入</div></div>
-    <div class="sbox fd" style="grid-column:1/3"><div class="sv">${yen(wFd)}</div><div class="sl">🥬 その他食材</div></div>
-  `;
-  // Day list
+    <div class="sbox t1"><div class="sv">${yenK(wT)}</div><div class="sl">週間予測売上（税込）</div></div>
+    <div class="sbox f"><div class="sv">${yen(wF)}</div><div class="sl">🐟 鮮魚</div></div>
+    <div class="sbox s"><div class="sv">${yen(wD)}</div><div class="sl">🍶 飲料</div></div>
+    <div class="sbox fd"><div class="sv">${yen(wFd)}</div><div class="sl">🥬 食材</div></div>
+    <div class="sbox" style="grid-column:1/3;border-color:${md.color}"><div class="sv" style="color:${md.color}">${yen(wPur)}</div><div class="sl">仕入合計（税込）<span class="cost-badge ${md.badge}" style="margin-left:6px">原価率${md.pct}%</span></div></div>`;
+
+  const compArea=document.getElementById('compArea');
+  if(curMode!=='current'){const mx=Math.max(cPur,wPur);compArea.innerHTML=`<div class="comp-bar"><div style="font-size:11px;color:var(--dim);margin-bottom:8px;font-weight:700">現状 vs ${md.label}（今週仕入比較）</div><div class="comp-row"><div class="clbl">現状53%</div><div class="cbar"><div class="cfill" style="width:${cPur/mx*100}%;background:var(--red)">${yen(cPur)}</div></div></div><div class="comp-row"><div class="clbl">${md.label}</div><div class="cbar"><div class="cfill" style="width:${wPur/mx*100}%;background:${md.color}">${yen(wPur)}</div></div></div><div style="text-align:right;font-size:13px;font-weight:900;color:${md.color};margin-top:6px">−${yen(saving)} / 週</div></div>`}else{compArea.innerHTML=''}
+
   const rr=document.getElementById('rrow');rr.innerHTML='';
   results.forEach(r=>{
-    const wi=WO.find(o=>o.v===r.w);
-    const fs=r.dow==='金'||r.dow==='土';
-    if(r.off){
-      rr.innerHTML+=`<div class="rday off"><div class="rl"><div class="rdow">${r.dow}</div><div class="rdt">${r.ds.slice(5)}</div></div><div class="rc"><div class="rsal" style="color:var(--mt);font-size:14px">定休日</div></div></div>`;
-    }else{
-      rr.innerHTML+=`<div class="rday"><div class="rl"><div class="rdow${fs?' fs':''}">${r.dow}</div><div class="rdt">${r.ds.slice(5)}</div><div class="rwi">${wi?wi.i:'☀'}</div></div><div class="rc"><div class="rsal">${yenK(r.p)}<small>予測</small></div><div class="rpur"><div class="rp"><span class="dot df"></span>🐟<b class="cf">${yen(r.fish)}</b></div><div class="rp"><span class="dot ds"></span>🍶<b class="cs">${yen(r.drink)}</b></div><div class="rp"><span class="dot dfd"></span>🥬<b class="cfd">${yen(r.food)}</b></div></div></div></div>`;
-    }
+    const wi=WO.find(o=>o.v===r.w);const fs=r.dow==='金'||r.dow==='土';
+    if(r.off){rr.innerHTML+=`<div class="rday off"><div class="rl"><div class="rdow">${r.dow}</div><div class="rdt">${r.ds.slice(5)}</div></div><div class="rc"><div class="rsal" style="color:var(--mt);font-size:14px">定休日</div></div></div>`}
+    else{rr.innerHTML+=`<div class="rday"><div class="rl"><div class="rdow${fs?' fs':''}">${r.dow}</div><div class="rdt">${r.ds.slice(5)}</div><div class="rwi">${wi?wi.i:'☀'}</div></div><div class="rc"><div class="rsal">${yenK(r.p)}<small>予測</small></div><div class="rpur"><div class="rp"><span class="dot df"></span>🐟<b class="cf">${yen(r.fish)}</b></div><div class="rp"><span class="dot ds"></span>🍶<b class="cs">${yen(r.drink)}</b></div><div class="rp"><span class="dot dfd"></span>🥬<b class="cfd">${yen(r.food)}</b></div></div></div></div>`}
   });
   document.getElementById('res').classList.remove('hide');
   document.getElementById('res').scrollIntoView({behavior:'smooth'});
 }
 
-// ===== ANALYSIS TAB DATA =====
 function initAnalysis(){
-  // DOW
   const dw=[{d:'月',v:148165},{d:'火',v:134484},{d:'水',v:141542},{d:'木',v:153585},{d:'金',v:207285},{d:'土',v:195104}];
   const mx=Math.max(...dw.map(x=>x.v));
-  document.getElementById('dowList').innerHTML=dw.map(x=>{
-    const p=x.v/mx*100;const c=x.d==='金'||x.d==='土'?'var(--ac)':'var(--blue)';
-    return `<div class="arow"><div class="al">${x.d}曜</div><div class="av" style="color:${c}">${yenK(x.v)}</div></div><div class="abr" style="width:${p}%;background:${c}"></div>`;
-  }).join('');
+  document.getElementById('dowList').innerHTML=dw.map(x=>{const p=x.v/mx*100;const c=x.d==='金'||x.d==='土'?'var(--ac)':'var(--blue)';return`<div class="arow"><div class="al">${x.d}曜</div><div class="av" style="color:${c}">${yenK(x.v)}</div></div><div class="abr" style="width:${p}%;background:${c}"></div>`}).join('');
 
-  // Time
   const tm=[{h:'17時',p:12.1},{h:'18時',p:27.4},{h:'19時',p:26.1},{h:'20時',p:15.9},{h:'21時',p:10.0},{h:'22時',p:5.9},{h:'23時',p:2.3},{h:'24時',p:0.3}];
   const tmx=Math.max(...tm.map(x=>x.p));
-  document.getElementById('timeList').innerHTML=tm.map(x=>{
-    const p=x.p/tmx*100;const c=x.p>20?'var(--ac)':x.p>10?'var(--blue)':'var(--mt)';
-    return `<div class="arow"><div class="al">${x.h}</div><div class="av" style="color:${c}">${x.p}%</div></div><div class="abr" style="width:${p}%;background:${c}"></div>`;
-  }).join('');
+  document.getElementById('timeList').innerHTML=tm.map(x=>{const p=x.p/tmx*100;const c=x.p>20?'var(--ac)':x.p>10?'var(--blue)':'var(--mt)';return`<div class="arow"><div class="al">${x.h}</div><div class="av" style="color:${c}">${x.p}%</div></div><div class="abr" style="width:${p}%;background:${c}"></div>`}).join('');
 
-  // Weather table
-  const wt=[
-    {d:'月',a:143,b:158,c:150,e:80},{d:'火',a:135,b:149,c:120,e:115},
-    {d:'水',a:147,b:151,c:118,e:132},{d:'木',a:156,b:153,c:143,e:154},
-    {d:'金',a:205,b:234,c:161,e:212},{d:'土',a:193,b:208,c:195,e:157}
-  ];
+  const wt=[{d:'月',a:143,b:158,c:150,e:80},{d:'火',a:135,b:149,c:120,e:115},{d:'水',a:147,b:151,c:118,e:132},{d:'木',a:156,b:153,c:143,e:154},{d:'金',a:205,b:234,c:161,e:212},{d:'土',a:193,b:208,c:195,e:157}];
   const cl=(v,b)=>v/b<.8?'color:var(--red);font-weight:700':v/b>1.1?'color:var(--food);font-weight:700':'';
-  document.getElementById('wtbl').innerHTML=wt.map(x=>{
-    const fs=x.d==='金'||x.d==='土'?'color:var(--ac);font-weight:700':'';
-    return `<tr style="border-bottom:1px solid var(--border)"><td style="padding:6px;${fs}">${x.d}</td><td style="padding:6px;text-align:right">¥${x.a}K</td><td style="padding:6px;text-align:right;${cl(x.b,x.a)}">¥${x.b}K</td><td style="padding:6px;text-align:right;${cl(x.c,x.a)}">¥${x.c}K</td><td style="padding:6px;text-align:right;${cl(x.e,x.a)}">¥${x.e}K</td></tr>`;
-  }).join('');
+  document.getElementById('wtbl').innerHTML=wt.map(x=>{const fs=x.d==='金'||x.d==='土'?'color:var(--ac);font-weight:700':'';return`<tr style="border-bottom:1px solid var(--border)"><td style="padding:6px;${fs}">${x.d}</td><td style="padding:6px;text-align:right">¥${x.a}K</td><td style="padding:6px;text-align:right;${cl(x.b,x.a)}">¥${x.b}K</td><td style="padding:6px;text-align:right;${cl(x.c,x.a)}">¥${x.c}K</td><td style="padding:6px;text-align:right;${cl(x.e,x.a)}">¥${x.e}K</td></tr>`}).join('');
 
-  // Month
   const mo=[{m:'1月',v:349},{m:'2月',v:371},{m:'3月',v:404},{m:'4月',v:405},{m:'5月',v:397},{m:'6月',v:377},{m:'7月',v:439},{m:'8月',v:477},{m:'9月',v:389},{m:'10月',v:493},{m:'11月',v:434},{m:'12月',v:487}];
   const mmx=Math.max(...mo.map(x=>x.v));
-  document.getElementById('monList').innerHTML=mo.map(x=>{
-    const p=x.v/mmx*100;const c=x.v>450?'var(--ac)':'var(--blue)';
-    return `<div class="arow"><div class="al">${x.m}</div><div class="av" style="color:${c}">¥${x.v}万</div></div><div class="abr" style="width:${p}%;background:${c}"></div>`;
-  }).join('');
+  document.getElementById('monList').innerHTML=mo.map(x=>{const p=x.v/mmx*100;const c=x.v>450?'var(--ac)':'var(--blue)';return`<div class="arow"><div class="al">${x.m}</div><div class="av" style="color:${c}">¥${x.v}万</div></div><div class="abr" style="width:${p}%;background:${c}"></div>`}).join('');
 
-  // Correlation
   const cr=[{l:'金土ダミー',v:.473,c:'var(--ac)'},{l:'月',v:.201,c:'var(--blue)'},{l:'日照時間',v:.053,c:'var(--mt)'},{l:'気温',v:.024,c:'var(--mt)'},{l:'降水量',v:-.036,c:'var(--mt)'}];
-  document.getElementById('corrList').innerHTML=cr.map(x=>{
-    const p=Math.abs(x.v)/.5*100;
-    return `<div class="arow"><div class="al">${x.l}</div><div class="av" style="color:${x.c}">${x.v>=0?'+':''}${x.v.toFixed(3)}</div></div><div class="abr" style="width:${p}%;background:${x.c}"></div>`;
-  }).join('');
+  document.getElementById('corrList').innerHTML=cr.map(x=>{const p=Math.abs(x.v)/.5*100;return`<div class="arow"><div class="al">${x.l}</div><div class="av" style="color:${x.c}">${x.v>=0?'+':''}${x.v.toFixed(3)}</div></div><div class="abr" style="width:${p}%;background:${x.c}"></div>`}).join('');
 
-  // Rank
-  const top=[
-    {d:'8/2(土)',v:331920,w:'☔26℃'},{d:'7/4(金)',v:330520,w:'☔25℃'},{d:'12/29(月)',v:315180,w:'☀2℃'},
-    {d:'1/24(金)',v:302160,w:'☀4℃'},{d:'6/27(金)',v:294540,w:'☀23℃'}
-  ];
-  const bot=[
-    {d:'3/3(月)',v:19470,w:'☔1℃'},{d:'1/7(火)',v:25990,w:'☀6℃'},{d:'1/14(火)',v:30740,w:'☀2℃'},
-    {d:'6/16(月)',v:39450,w:'☀24℃'},{d:'9/23(火)',v:44150,w:'☀17℃'}
-  ];
+  const top=[{d:'8/2(土)',v:331920,w:'☔26℃'},{d:'7/4(金)',v:330520,w:'☔25℃'},{d:'12/29(月)',v:315180,w:'☀2℃'},{d:'1/24(金)',v:302160,w:'☀4℃'},{d:'6/27(金)',v:294540,w:'☀23℃'}];
+  const bot=[{d:'3/3(月)',v:19470,w:'☔1℃'},{d:'1/7(火)',v:25990,w:'☀6℃'},{d:'1/14(火)',v:30740,w:'☀2℃'},{d:'6/16(月)',v:39450,w:'☀24℃'},{d:'9/23(火)',v:44150,w:'☀17℃'}];
   let rhtml='<div style="font-size:12px;font-weight:700;color:var(--food);margin:8px 0 4px">🏆 トップ5</div>';
   top.forEach(x=>{rhtml+=`<div class="arow"><div class="al">${x.d} ${x.w}</div><div class="av" style="color:var(--ac)">${yen(x.v)}</div></div>`});
   rhtml+='<div style="font-size:12px;font-weight:700;color:var(--red);margin:12px 0 4px">⚠ ワースト5</div>';
@@ -398,12 +440,9 @@ function initAnalysis(){
   document.getElementById('rankList').innerHTML=rhtml;
 }
 
-// Init
 window.addEventListener('DOMContentLoaded',()=>{
-  const m=getNextMon();
-  document.getElementById('sd').value=m.toISOString().split('T')[0];
-  genWeek();
-  initAnalysis();
+  const m=getNextMon();document.getElementById('sd').value=m.toISOString().split('T')[0];
+  genWeek();initModes();initAnalysis();
 });
 </script>
 </body>
