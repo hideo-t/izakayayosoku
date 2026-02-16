@@ -15,7 +15,7 @@ button{font-family:inherit}
 .hd h1{font-size:16px;font-weight:900}.hd h1 b{color:var(--ac)}.hd p{font-size:10px;color:var(--dim);margin-top:1px}
 .wrap{padding:12px 12px 80px}
 .tabs{display:flex;gap:5px;margin-bottom:14px;overflow-x:auto;-webkit-overflow-scrolling:touch}
-.tab{flex-shrink:0;padding:7px 13px;border-radius:20px;font-size:11px;font-weight:700;border:1px solid var(--border);background:var(--card);color:var(--dim);cursor:pointer;transition:.2s}
+.tab{flex-shrink:0;padding:7px 13px;border-radius:20px;font-size:11px;font-weight:700;border:1px solid var(--border);background:var(--card);color:var(--dim);cursor:pointer}
 .tab.on{background:var(--ac);color:#fff;border-color:var(--ac)}
 .cd{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:10px}
 .cd-t{font-size:11px;font-weight:700;color:var(--dim);letter-spacing:.5px;margin-bottom:10px}
@@ -72,7 +72,6 @@ button{font-family:inherit}
 .find b{color:var(--ac)}.find .ft{font-size:11px;font-weight:900;color:var(--ac);margin-bottom:6px}
 .warn-box{background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);border-radius:10px;padding:14px;margin-bottom:12px;font-size:13px;line-height:1.7}
 .warn-box b{color:var(--red)}.warn-box .wt{font-size:11px;font-weight:900;color:var(--red);margin-bottom:6px}
-/* Slider */
 .sim-slider{margin:16px 0}
 .sim-slider label{display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px}
 .sim-slider label b{color:var(--ac);font-size:16px}
@@ -80,22 +79,13 @@ button{font-family:inherit}
 .sim-slider input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:var(--ac);cursor:pointer;border:3px solid var(--bg)}
 .sim-ticks{display:flex;justify-content:space-between;font-size:9px;color:var(--dim);margin-top:2px;padding:0 2px}
 .sim-big{text-align:center;padding:20px;border-radius:12px;margin-bottom:12px}
-.sim-big .sb-v{font-size:36px;font-weight:900;letter-spacing:-1px}
-.sim-big .sb-l{font-size:12px;margin-top:4px}
+.sim-big .sb-v{font-size:36px;font-weight:900;letter-spacing:-1px}.sim-big .sb-l{font-size:12px;margin-top:4px}
 .sim-vs{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin:12px 0}
 .sim-vs .sv-box{text-align:center;padding:12px;border-radius:10px;background:var(--card);border:1px solid var(--border)}
 .sim-vs .sv-box .svv{font-size:20px;font-weight:900}.sim-vs .sv-box .svl{font-size:10px;color:var(--dim);margin-top:2px}
 .sim-vs .sv-arrow{font-size:20px;color:var(--ac)}
 .bep-box{background:linear-gradient(135deg,rgba(249,115,22,.1),rgba(234,179,8,.1));border:1px solid rgba(249,115,22,.3);border-radius:12px;padding:16px;text-align:center;margin:12px 0}
 .bep-box .bep-v{font-size:28px;font-weight:900;color:var(--ac)}.bep-box .bep-l{font-size:12px;color:var(--dim);margin-top:4px}
-/* Cumulative chart */
-.cum-chart{padding:4px 0}
-.cum-row{display:flex;align-items:flex-end;gap:4px;margin-bottom:2px}
-.cum-label{width:32px;font-size:10px;color:var(--dim);text-align:right;flex-shrink:0;padding-bottom:2px}
-.cum-bars{flex:1;display:flex;height:32px;border-radius:4px;overflow:hidden;position:relative}
-.cum-seg{height:100%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:rgba(255,255,255,.9);transition:.3s;min-width:0}
-.cum-seg span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 3px}
-.cum-val{font-size:11px;font-weight:700;padding-left:6px;flex-shrink:0;min-width:50px;padding-bottom:2px}
 .cum-legend{display:flex;gap:12px;margin-top:10px;font-size:10px;color:var(--dim);flex-wrap:wrap}
 .cum-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:3px;vertical-align:middle}
 .cum-total-line{text-align:right;font-size:14px;font-weight:900;margin-top:8px;padding:10px 0;border-top:1px solid var(--border)}
@@ -103,7 +93,7 @@ button{font-family:inherit}
 </style>
 </head>
 <body>
-<div class="hd"><h1>🏮 北海 <b>仕入れナビ</b></h1><p>売上予測＋刺身削減シミュレーター＋積上グラフ｜v4</p></div>
+<div class="hd"><h1>🏮 北海 <b>仕入れナビ</b></h1><p>売上予測＋刺身削減シミュレーター｜2025実績ベース v4.1</p></div>
 <div class="wrap">
 <div class="tabs">
   <div class="tab on" onclick="showTab(0)">📊 予測</div>
@@ -116,7 +106,7 @@ button{font-family:inherit}
 <!-- TAB 0 -->
 <div id="tab0">
   <div class="drow"><input type="date" id="sd"><button class="go" onclick="genWeek()">表示</button></div>
-  <div class="cd-t">① 天気予報を入力（→スクロール）</div>
+  <div class="cd-t">① 天気を入力（→スクロール）</div>
   <div class="frow" id="frow"></div>
   <div class="cd-t" style="margin-top:14px">② 仕入れモード</div>
   <div class="mode-sel" id="modeSel"></div>
@@ -127,53 +117,48 @@ button{font-family:inherit}
     <div class="cd-t">週間サマリー</div>
     <div class="sstrip" id="sstrip"></div>
     <div id="compArea"></div>
-    <!-- CUMULATIVE CHART in prediction -->
     <div id="predCum" class="cd" style="display:none">
-      <div class="cd-t">📈 この改善を続けると…（粗利の積み上げ）</div>
+      <div class="cd-t">📈 この改善を続けると…（2025年実績ベース）</div>
       <div id="predCumChart"></div>
     </div>
     <div class="cd-t">日別 予測＆仕入れ</div>
     <div class="rrow" id="rrow"></div>
-    <div class="tax-note">💰 全額税込表示。⚠ 土曜鮮魚−20%</div>
+    <div class="tax-note">💰 全額税込。⚠ 土曜鮮魚−20%</div>
   </div>
 </div>
-
 <!-- TAB 1 -->
 <div id="tab1" class="hide">
   <div class="find"><div class="ft">📊 365日分析</div><b>売上＝曜日で決まる。天候は無関係。</b><br>金¥207K・土¥195K vs 火¥134K。例外：<b>月曜雪＝半額</b>、<b>金曜大雨＝3割減</b>。</div>
   <div class="cd"><div class="cd-t">曜日別 平均売上</div><div id="dowList"></div></div>
-  <div class="cd"><div class="cd-t">時間帯別 構成比</div><div id="timeList"></div></div>
+  <div class="cd"><div class="cd-t">時間帯別</div><div id="timeList"></div></div>
   <div class="cd"><div class="cd-t">天候の影響</div><div style="overflow-x:auto"><table style="width:100%;font-size:11px;border-collapse:collapse;white-space:nowrap"><thead><tr style="color:var(--dim);border-bottom:1px solid var(--border)"><th style="padding:6px;text-align:left">曜</th><th style="padding:6px;text-align:right">☀</th><th style="padding:6px;text-align:right">🌦</th><th style="padding:6px;text-align:right">🌧</th><th style="padding:6px;text-align:right">❄</th></tr></thead><tbody id="wtbl"></tbody></table></div></div>
   <div class="cd"><div class="cd-t">月別売上</div><div id="monList"></div></div>
   <div class="cd"><div class="cd-t">相関係数</div><div id="corrList"></div></div>
 </div>
-
 <!-- TAB 2 -->
 <div id="tab2" class="hide">
-  <div class="warn-box"><div class="wt">🐟 鮮魚原価が全てを食っている</div>原価率53%。<b>鮮魚だけで30%。</b>飲料11%・食材11%は適正。<br>鮮魚は毎日仕入＝毎日消費。レシートの信頼度は高い。</div>
+  <div class="warn-box"><div class="wt">🐟 鮮魚原価が全てを食う</div>原価率53%。<b>鮮魚だけで30%。</b>飲料11%・食材11%は適正。<br>鮮魚は毎日仕入→毎日消費。レシート日額≒実態。</div>
   <div class="cd">
     <div class="cd-t">原価構造（税込/日）</div>
     <div class="kv"><span class="k">🐟 鮮魚</span><span class="v" style="color:var(--red)">¥49,934 (30.5%)</span></div>
     <div class="kv"><span class="k">🍶 飲料</span><span class="v cf">¥17,737 (10.8%)</span></div>
     <div class="kv"><span class="k">🥬 食材</span><span class="v cfd">¥18,519 (11.3%)</span></div>
     <div class="kv" style="border-top:2px solid var(--ac)"><span class="k" style="color:var(--tx);font-weight:900">合計</span><span class="v" style="color:var(--ac);font-size:16px">¥86,190 (52.7%)</span></div>
-    <div style="font-size:10px;color:var(--dim);margin-top:8px">鮮魚＝1日で腐る→日額レシート≒実態（まとめ買い効果なし）<br>飲料＝白井酒店1月請求書から月次実額で算出</div>
   </div>
   <div class="cd">
     <div class="cd-t">原価率比較</div>
     <div class="kv"><span class="k">🐟 刺身（推定）</span><span class="v" style="color:var(--red);font-size:16px">88%</span></div>
+    <div style="font-size:10px;color:var(--dim);padding-bottom:8px;border-bottom:1px solid var(--border)">※推定値（フード構成比に仮定あり）。鮮魚¥49,934/日は確定。</div>
     <div class="kv"><span class="k">🫛 枝豆</span><span class="v cfd">8%</span></div>
     <div class="kv"><span class="k">🧊 冷奴</span><span class="v cfd">7%</span></div>
     <div class="kv"><span class="k">🍗 唐揚げ</span><span class="v" style="color:var(--sake)">17%</span></div>
     <div class="kv"><span class="k">🐟 焼魚</span><span class="v" style="color:var(--sake)">25%</span></div>
     <div class="kv" style="border-top:2px solid var(--food)"><span class="k" style="color:var(--tx)">代替メニュー平均</span><span class="v cfd" style="font-size:16px">14%</span></div>
-    <div style="font-size:10px;color:var(--dim);margin-top:6px">※刺身88%は推定（フード構成比・鮮魚配分に仮定あり）。<br>ただし鮮魚¥49,934/日（売上の30.5%）は確定値。</div>
   </div>
 </div>
-
 <!-- TAB 3: SIMULATOR -->
 <div id="tab3" class="hide">
-  <div class="find"><div class="ft">🔮 刺身削減シミュレーター</div>刺身を減らすと売上は落ちる。<b>でも粗利は増える。</b><br>スライダーで調整して、積み上げグラフで未来を見る。</div>
+  <div class="find"><div class="ft">🔮 刺身削減シミュレーター</div>売上は落ちる。<b>でも粗利は増える。</b>2025年の月別実績から算出。</div>
   <div class="cd">
     <div class="cd-t">スライダーで調整</div>
     <div class="sim-slider">
@@ -185,41 +170,28 @@ button{font-family:inherit}
       <label>🍳 代替メニュー転換率 <b id="repV">50%</b></label>
       <input type="range" id="repR" min="0" max="100" step="10" value="50" oninput="simUpdate()">
       <div class="sim-ticks"><span>0%</span><span>50%</span><span>100%</span></div>
-      <div style="font-size:10px;color:var(--dim);margin-top:4px">失った刺身売上→枝豆・焼鳥等に置き換わる割合</div>
+      <div style="font-size:10px;color:var(--dim);margin-top:4px">刺身の売上→枝豆・焼鳥等に置き換わる割合</div>
     </div>
   </div>
   <div id="simResult"></div>
-  <!-- 12-MONTH CUMULATIVE CHART -->
   <div class="cd" id="simCumCard">
-    <div class="cd-t">📈 実行すると12ヶ月でこうなる</div>
+    <div class="cd-t">📈 来月から実行すると12ヶ月でこうなる（2025年実績ベース）</div>
     <div id="simCumChart"></div>
   </div>
   <div class="cd">
     <div class="cd-t">前提条件</div>
     <div style="font-size:11px;color:var(--dim);line-height:1.8">
-      ・日販¥163,565（307営業日平均）・フード62%/ドリンク38%<br>
-      ・刺身＝フード売上の45%（¥45,635/日）・刺身原価率88%（推定）<br>
-      ・代替メニュー平均原価率14%・鮮魚¥49,934/日は確定値
+      ・月別売上は2025年POS実績（季節変動を反映）<br>
+      ・鮮魚¥49,934/日は確定値（日次消費＝日次仕入）<br>
+      ・刺身原価率88%、代替平均14%は推定
     </div>
   </div>
 </div>
-
 <!-- TAB 4 -->
 <div id="tab4" class="hide">
-  <div class="cd">
-    <div class="cd-t">予測モデル</div>
-    <div class="kv"><span class="k">種別</span><span class="v">曜日×月×天候</span></div>
-    <div class="kv"><span class="k">学習</span><span class="v">2025年 307営業日</span></div>
-    <div class="kv"><span class="k">±30%以内</span><span class="v cfd">74.9%</span></div>
-  </div>
-  <div class="cd">
-    <div class="cd-t">原価データ（v4）</div>
-    <div class="kv"><span class="k">鮮魚</span><span class="v">11月レシート（日額≒実態）</span></div>
-    <div class="kv"><span class="k">飲料</span><span class="v cfd">1月白井酒店請求</span></div>
-    <div class="kv"><span class="k">食材</span><span class="v">11月レシート</span></div>
-  </div>
-  <div class="cd">
-    <div class="cd-t">係数比較</div>
+  <div class="cd"><div class="cd-t">予測モデル</div><div class="kv"><span class="k">種別</span><span class="v">曜日×月×天候</span></div><div class="kv"><span class="k">学習</span><span class="v">2025年307営業日</span></div><div class="kv"><span class="k">±30%以内</span><span class="v cfd">74.9%</span></div></div>
+  <div class="cd"><div class="cd-t">原価データ(v4)</div><div class="kv"><span class="k">鮮魚</span><span class="v">11月レシート(日額≒実態)</span></div><div class="kv"><span class="k">飲料</span><span class="v cfd">1月白井酒店請求</span></div><div class="kv"><span class="k">食材</span><span class="v">11月レシート</span></div></div>
+  <div class="cd"><div class="cd-t">係数</div>
     <table style="width:100%;font-size:11px;border-collapse:collapse">
       <thead><tr style="color:var(--dim);border-bottom:1px solid var(--border)"><th style="padding:6px;text-align:left"></th><th style="padding:6px;text-align:center;color:var(--red)">現状53%</th><th style="padding:6px;text-align:center;color:var(--sake)">目標37%</th><th style="padding:6px;text-align:center;color:var(--food)">業界30%</th></tr></thead>
       <tbody>
@@ -234,6 +206,11 @@ button{font-family:inherit}
 </div>
 
 <script>
+// ===== 2025 ACTUAL MONTHLY SALES (万円) =====
+const MONTHLY_SALES=[349,371,404,405,397,377,439,477,389,493,434,487]; // Jan-Dec
+const MONTH_NAMES=['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+const ANNUAL_SALES=MONTHLY_SALES.reduce((a,b)=>a+b,0); // 5022万
+
 // ===== MODEL =====
 const M={
   base:{月:155780,火:126785,水:131680,木:148540,金:211595,土:195840,日:0},
@@ -263,20 +240,18 @@ function calc(){
   days.forEach((el,i)=>{const dow=el.dataset.dow,mo=+el.dataset.mo,ds=el.dataset.ds;const sel=document.getElementById('ws'+i);const w=sel?sel.value:'d';const p=pred(dow,mo,w);const fa=(dow==='土')?.8:1;const fish=Math.round(p*md.fish*fa),drink=Math.round(p*md.drink),food=Math.round(p*md.food);wT+=p;wF+=fish;wD+=drink;wFd+=food;cF+=Math.round(p*mc.fish*fa);cD+=Math.round(p*mc.drink);cFd+=Math.round(p*mc.food);results.push({dow,mo,ds,w,p,fish,drink,food,off:dow==='日'})});
   const wPur=wF+wD+wFd,cPur=cF+cD+cFd,saving=cPur-wPur;
   const ca=document.getElementById('costAlert');
-  if(curMode==='current'){ca.innerHTML=`<div class="warn-box"><div class="wt">⚠ 現状53%</div><b>鮮魚半減(37%)</b>への切替推奨。</div>`}
-  else if(saving>0){ca.innerHTML=`<div class="find"><div class="ft">💰 ${md.label}(${md.pct}%)</div>今週 <b>−${yen(saving)}</b>｜年間<b style="font-size:16px">約¥${Math.round(saving*52/10000)}万改善</b></div>`}
-  else{ca.innerHTML=''}
+  if(curMode==='current'){ca.innerHTML=`<div class="warn-box"><div class="wt">⚠ 現状53%</div><b>鮮魚半減(37%)</b>切替推奨。</div>`}
+  else if(saving>0){ca.innerHTML=`<div class="find"><div class="ft">💰 ${md.label}(${md.pct}%)</div>今週 <b>−${yen(saving)}</b>｜年間<b style="font-size:16px">約¥${Math.round(saving*52/10000)}万改善</b></div>`}else{ca.innerHTML=''}
   document.getElementById('sstrip').innerHTML=`<div class="sbox t1"><div class="sv">${yenK(wT)}</div><div class="sl">週間予測売上</div></div><div class="sbox" style="border-color:var(--fish)"><div class="sv cf">${yen(wF)}</div><div class="sl">🐟鮮魚</div></div><div class="sbox" style="border-color:var(--sake)"><div class="sv cs">${yen(wD)}</div><div class="sl">🍶飲料</div></div><div class="sbox" style="border-color:var(--food)"><div class="sv cfd">${yen(wFd)}</div><div class="sl">🥬食材</div></div><div class="sbox" style="grid-column:1/3;border-color:${md.color}"><div class="sv" style="color:${md.color}">${yen(wPur)}</div><div class="sl">仕入合計 <span class="cost-badge ${md.badge}" style="margin-left:6px">${md.pct}%</span></div></div>`;
   const ca2=document.getElementById('compArea');
   if(curMode!=='current'&&saving>0){const mx=Math.max(cPur,wPur);ca2.innerHTML=`<div class="comp-bar"><div style="font-size:11px;color:var(--dim);margin-bottom:8px;font-weight:700">現状 vs ${md.label}</div><div class="comp-row"><div class="clbl">現状</div><div class="cbar"><div class="cfill" style="width:${cPur/mx*100}%;background:var(--red)">${yen(cPur)}</div></div></div><div class="comp-row"><div class="clbl">${md.label}</div><div class="cbar"><div class="cfill" style="width:${wPur/mx*100}%;background:${md.color}">${yen(wPur)}</div></div></div><div style="text-align:right;font-size:13px;font-weight:900;color:${md.color};margin-top:6px">−${yen(saving)}/週</div></div>`}else{ca2.innerHTML=''}
-  // Cumulative chart in prediction tab
-  const pc=document.getElementById('predCum');const pcc=document.getElementById('predCumChart');
+  // Cumulative chart in prediction
+  const pc=document.getElementById('predCum'),pcc=document.getElementById('predCumChart');
   if(curMode!=='current'&&saving>0){
     pc.style.display='block';
-    const weekSaving=saving;
-    const weekCurrentGross=wT-cPur;
-    const weekNewGross=wT-wPur;
-    pcc.innerHTML=buildCumChart(weekCurrentGross,weekNewGross,6,'週',4.33);
+    const curRate=mc.fish+mc.drink+mc.food;
+    const newRate=md.fish+md.drink+md.food;
+    pcc.innerHTML=buildCumChart12(curRate,newRate);
   }else{pc.style.display='none'}
   // Day cards
   const rr=document.getElementById('rrow');rr.innerHTML='';
@@ -284,33 +259,67 @@ function calc(){
   document.getElementById('res').classList.remove('hide');document.getElementById('res').scrollIntoView({behavior:'smooth'});
 }
 
-// ===== CUMULATIVE CHART BUILDER =====
-function buildCumChart(currentPeriodGross,newPeriodGross,periods,unit,weeksPerPeriod){
-  const diff=newPeriodGross-currentPeriodGross;
-  if(diff<=0)return'<div style="color:var(--dim);font-size:12px">改善効果がありません</div>';
+// ===== CUMULATIVE CHART (Monthly sales weighted) =====
+function buildCumChart12(curCostRate,newCostRate){
+  // Start from next month
+  const now=new Date();
+  const startMonth=now.getMonth()+1; // 0-indexed+1 = next month (Feb→2, so start=Mar=2)
+  const startIdx=startMonth%12; // March=2
+  
+  let cumCurrentGross=0,cumNewGross=0;
   let h='';
-  let cumCurrent=0,cumNew=0,cumDiff=0;
-  const allMax=newPeriodGross*periods;
-  const mn=['1月目','2月目','3月目','4月目','5月目','6月目','7月目','8月目','9月目','10月目','11月目','12月目'];
-  for(let i=0;i<periods;i++){
-    cumCurrent+=(currentPeriodGross);
-    cumNew+=(newPeriodGross);
-    cumDiff=cumNew-cumCurrent;
-    const basePct=cumCurrent/allMax*100;
-    const diffPct=(cumDiff)/allMax*100;
-    const diffMan=Math.round(cumDiff/10000);
-    h+=`<div class="cum-row">`;
-    h+=`<div class="cum-label">${mn[i]||i+1}</div>`;
-    h+=`<div class="cum-bars" style="background:rgba(255,255,255,.04)">`;
-    h+=`<div class="cum-seg" style="width:${basePct}%;background:var(--mt)"><span>${basePct>15?'現状粗利':''}</span></div>`;
-    h+=`<div class="cum-seg" style="width:${diffPct}%;background:var(--food)"><span>${diffPct>8?'+¥'+diffMan+'万':''}</span></div>`;
+  const monthData=[];
+  let maxCumNew=0;
+  
+  // Pre-calculate to find max for scaling
+  for(let i=0;i<12;i++){
+    const mi=(startIdx+i)%12;
+    const sales=MONTHLY_SALES[mi]*10000;
+    const cGross=sales*(1-curCostRate);
+    const nGross=sales*(1-newCostRate);
+    cumCurrentGross+=cGross;cumNewGross+=nGross;
+    monthData.push({mi,sales,cGross,nGross,cumC:cumCurrentGross,cumN:cumNewGross,diff:cumNewGross-cumCurrentGross});
+  }
+  maxCumNew=cumNewGross;
+  
+  // Find peak improvement month
+  let peakDiffMonth=0,peakDiffVal=0;
+  monthData.forEach((d,i)=>{const mDiff=d.nGross-d.cGross;if(mDiff>peakDiffVal){peakDiffVal=mDiff;peakDiffMonth=i}});
+  
+  for(let i=0;i<12;i++){
+    const d=monthData[i];
+    const mn=MONTH_NAMES[d.mi];
+    const salesMan=MONTHLY_SALES[d.mi];
+    const cPct=d.cumC/maxCumNew*100;
+    const diffPct=(d.cumN-d.cumC)/maxCumNew*100;
+    const diffMan=Math.round(d.diff/10000);
+    const isPeak=i===peakDiffMonth;
+    const monthDiffMan=Math.round((d.nGross-d.cGross)/10000);
+    
+    h+=`<div style="margin-bottom:4px">`;
+    h+=`<div style="display:flex;align-items:center;gap:4px">`;
+    h+=`<div style="width:28px;font-size:10px;color:${isPeak?'var(--ac)':'var(--dim)'};text-align:right;flex-shrink:0;font-weight:${isPeak?'900':'400'}">${mn}</div>`;
+    h+=`<div style="flex:1">`;
+    // Stacked bar: current gross (gray) + improvement (green)
+    h+=`<div style="display:flex;height:24px;border-radius:4px;overflow:hidden;background:rgba(255,255,255,.03)">`;
+    h+=`<div style="width:${cPct}%;background:var(--mt);display:flex;align-items:center;justify-content:flex-end;padding-right:4px;font-size:8px;color:rgba(255,255,255,.5)">${cPct>12?'¥'+Math.round(d.cumC/10000)+'万':''}</div>`;
+    h+=`<div style="width:${diffPct}%;background:${isPeak?'var(--ac)':'var(--food)'};display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#fff">${diffPct>5?'+¥'+monthDiffMan+'万':''}</div>`;
     h+=`</div>`;
-    h+=`<div class="cum-val" style="color:var(--food)">+¥${diffMan}万</div>`;
+    h+=`</div>`;
+    h+=`<div style="width:58px;font-size:10px;font-weight:700;text-align:right;flex-shrink:0;color:var(--food)">+¥${diffMan}万</div>`;
+    h+=`</div>`;
+    // Sales annotation for every 3rd month or peak
+    if(i%3===0||isPeak){
+      h+=`<div style="margin-left:32px;font-size:9px;color:var(--dim)">売上¥${salesMan}万${isPeak?' 🔥繁忙月で効果最大':''}</div>`;
+    }
     h+=`</div>`;
   }
-  const totalDiffMan=Math.round((newPeriodGross-currentPeriodGross)*periods/10000);
-  h+=`<div class="cum-total-line" style="color:var(--food)">${periods}ヶ月の積み上げ効果: <span style="font-size:20px">+¥${totalDiffMan}万</span></div>`;
-  h+=`<div class="cum-legend"><span><i style="background:var(--mt)"></i>現状のまま</span><span><i style="background:var(--food)"></i>改善による増分</span></div>`;
+  
+  const totalDiff=monthData[11].diff;
+  const totalMan=Math.round(totalDiff/10000);
+  h+=`<div class="cum-total-line" style="color:var(--food)">12ヶ月の積み上げ効果: <span style="font-size:24px">+¥${totalMan}万</span></div>`;
+  h+=`<div class="cum-legend"><span><i style="background:var(--mt)"></i>現状粗利</span><span><i style="background:var(--food)"></i>改善による増分</span><span style="color:var(--ac)">🔥繁忙月</span></div>`;
+  h+=`<div style="font-size:10px;color:var(--dim);margin-top:6px">※月別売上は2025年POS実績。繁忙月ほど改善効果が大きい。</div>`;
   return h;
 }
 
@@ -324,8 +333,7 @@ function simCalc(cutPct,repPct){
   const newSales=C.dailySales*(1-salesDropPct/100);
   const newSashimiP=C.sashimiPurchase*(1-cutPct/100);
   const newFishCost=newSashimiP+C.otherFishPurchase;
-  const lostSashimiSales=C.sashimiSales*(cutPct/100);
-  const replacedSales=lostSashimiSales*(repPct/100);
+  const replacedSales=C.sashimiSales*(cutPct/100)*(repPct/100);
   const replaceCost=replacedSales*C.replaceCostRate;
   const newDrinkCost=C.drinkCost*(1-salesDropPct/100*0.5);
   const newFoodCost=C.foodCost+replaceCost;
@@ -333,11 +341,13 @@ function simCalc(cutPct,repPct){
   const currentCost=C.sashimiPurchase+C.otherFishPurchase+C.drinkCost+C.foodCost;
   const currentGross=C.dailySales-currentCost;
   const newGross=newSales-newTotalCost;
-  const newGrossRate=newGross/newSales;
+  const newGrossRate=newSales>0?newGross/newSales:0;
   const annualDiff=(newGross-currentGross)*C.opDays;
-  let bep=0;
-  for(let d=0;d<=40;d++){const s=C.dailySales*(1-d/100);const nsp=C.sashimiPurchase*(1-cutPct/100);const nf=nsp+C.otherFishPurchase;const ls=C.sashimiSales*(cutPct/100);const rs=ls*(repPct/100);const rc=rs*C.replaceCostRate;const nd=C.drinkCost*(1-d/100*0.5);const nfo=C.foodCost+rc;const nc=nf+nd+nfo;const ng=s-nc;if(ng<currentGross){bep=d;break}if(d===40)bep=40}
-  return{newSales,newTotalCost,newGross,newGrossRate,annualDiff,salesDropPct,currentGross,bep,newFishCost,newDrinkCost,newFoodCost};
+  // Cost rates for chart
+  const curCostRate=currentCost/C.dailySales;
+  const newCostRate=newTotalCost/newSales;
+  let bep=0;for(let d=0;d<=40;d++){const s=C.dailySales*(1-d/100);const nsp=C.sashimiPurchase*(1-cutPct/100);const nf=nsp+C.otherFishPurchase;const rs=C.sashimiSales*(cutPct/100)*(repPct/100);const rc=rs*C.replaceCostRate;const nd=C.drinkCost*(1-d/100*0.5);const nfo=C.foodCost+rc;const nc=nf+nd+nfo;if(s-nc<currentGross){bep=d;break}if(d===40)bep=40}
+  return{newSales,newTotalCost,newGross,newGrossRate,annualDiff,salesDropPct,currentGross,bep,curCostRate,newCostRate};
 }
 
 function simUpdate(){
@@ -348,56 +358,13 @@ function simUpdate(){
   const r=simCalc(cut,rep);
   const C=SIM;const diffAbs=Math.abs(r.annualDiff);
   let h='';
-  if(r.annualDiff>=0){h+=`<div class="sim-big" style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.3)"><div class="sb-v" style="color:var(--food)">+¥${Math.round(diffAbs/10000)}万/年</div><div class="sb-l">売上${r.salesDropPct.toFixed(0)}%減でも粗利は<b style="color:var(--food)">増える</b></div></div>`}
-  else{h+=`<div class="sim-big" style="background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.3)"><div class="sb-v" style="color:var(--red)">−¥${Math.round(diffAbs/10000)}万/年</div><div class="sb-l">粗利が減少する条件</div></div>`}
-  h+=`<div class="sim-vs"><div class="sv-box"><div class="svv" style="color:var(--dim)">${yen(Math.round(C.dailySales))}</div><div class="svl">現状 日販</div><div style="font-size:11px;margin-top:4px">粗利 ${yen(Math.round(r.currentGross))}</div><div style="font-size:10px;color:var(--dim)">率 ${(r.currentGross/C.dailySales*100).toFixed(0)}%</div></div><div class="sv-arrow">→</div><div class="sv-box" style="border-color:${r.annualDiff>=0?'var(--food)':'var(--red)'}"><div class="svv" style="color:var(--ac)">${yen(Math.round(r.newSales))}</div><div class="svl">改善後 日販</div><div style="font-size:11px;margin-top:4px;color:var(--food)">粗利 ${yen(Math.round(r.newGross))}</div><div style="font-size:10px;color:${r.annualDiff>=0?'var(--food)':'var(--red)'}">率 ${(r.newGrossRate*100).toFixed(0)}%</div></div></div>`;
-  // BEP
-  h+=`<div class="bep-box"><div class="bep-l">💡 損益分岐点</div><div class="bep-v">売上${r.bep>39?'40+':r.bep}%減まで耐える</div><div class="bep-l">売上${r.bep-1>0?r.bep-1:0}%以内の減少なら粗利UP</div></div>`;
+  if(r.annualDiff>=0){h+=`<div class="sim-big" style="background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.3)"><div class="sb-v" style="color:var(--food)">+¥${Math.round(diffAbs/10000)}万/年</div><div class="sb-l">売上${r.salesDropPct.toFixed(0)}%減でも粗利<b style="color:var(--food)">UP</b></div></div>`}
+  else{h+=`<div class="sim-big" style="background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.3)"><div class="sb-v" style="color:var(--red)">−¥${Math.round(diffAbs/10000)}万/年</div><div class="sb-l">粗利減少</div></div>`}
+  h+=`<div class="sim-vs"><div class="sv-box"><div class="svv" style="color:var(--dim)">${yen(Math.round(C.dailySales))}</div><div class="svl">現状日販</div><div style="font-size:11px;margin-top:4px">粗利 ${yen(Math.round(r.currentGross))}</div><div style="font-size:10px;color:var(--dim)">率 ${(r.currentGross/C.dailySales*100).toFixed(0)}%</div></div><div class="sv-arrow">→</div><div class="sv-box" style="border-color:${r.annualDiff>=0?'var(--food)':'var(--red)'}"><div class="svv" style="color:var(--ac)">${yen(Math.round(r.newSales))}</div><div class="svl">改善後日販</div><div style="font-size:11px;margin-top:4px;color:var(--food)">粗利 ${yen(Math.round(r.newGross))}</div><div style="font-size:10px;color:${r.annualDiff>=0?'var(--food)':'var(--red)'}">率 ${(r.newGrossRate*100).toFixed(0)}%</div></div></div>`;
+  h+=`<div class="bep-box"><div class="bep-l">💡 損益分岐点</div><div class="bep-v">売上${r.bep>39?'40+':r.bep}%減まで耐える</div><div class="bep-l">売上${Math.max(0,r.bep-1)}%以内の減少なら粗利UP</div></div>`;
   document.getElementById('simResult').innerHTML=h;
-
-  // 12-month cumulative chart
-  const monthlyCurrentGross=r.currentGross*(C.opDays/12);
-  const monthlyNewGross=r.newGross*(C.opDays/12);
-  document.getElementById('simCumChart').innerHTML=buildCumChart12(monthlyCurrentGross,monthlyNewGross,r.annualDiff);
-}
-
-function buildCumChart12(mCurrent,mNew,annualDiff){
-  const months=12;
-  const diff=mNew-mCurrent;
-  let h='';
-  let cumC=0,cumN=0;
-  const allMaxN=mNew*months;
-  const allMaxC=mCurrent*months;
-  const allMax=Math.max(allMaxN,allMaxC);
-  const mn=['3月','4月','5月','6月','7月','8月','9月','10月','11月','12月','1月','2月'];
-
-  for(let i=0;i<months;i++){
-    cumC+=mCurrent;cumN+=mNew;
-    const cumDiff=cumN-cumC;
-    // Two-row comparison per month
-    const cPct=cumC/allMax*100;
-    const nPct=cumN/allMax*100;
-    const diffMan=Math.round(cumDiff/10000);
-    const isPlus=cumDiff>=0;
-
-    h+=`<div style="margin-bottom:6px">`;
-    h+=`<div style="display:flex;align-items:center;gap:4px">`;
-    h+=`<div style="width:28px;font-size:9px;color:var(--dim);text-align:right;flex-shrink:0">${mn[i]}</div>`;
-    h+=`<div style="flex:1;position:relative">`;
-    // Current bar
-    h+=`<div style="height:12px;border-radius:3px;overflow:hidden;margin-bottom:2px;background:rgba(255,255,255,.04)"><div style="height:100%;width:${cPct}%;background:var(--mt);border-radius:3px"></div></div>`;
-    // New bar
-    h+=`<div style="height:12px;border-radius:3px;overflow:hidden;background:rgba(255,255,255,.04)"><div style="height:100%;width:${nPct}%;background:${isPlus?'var(--food)':'var(--red)'};border-radius:3px"></div></div>`;
-    h+=`</div>`;
-    h+=`<div style="width:55px;font-size:10px;font-weight:700;text-align:right;flex-shrink:0;color:${isPlus?'var(--food)':'var(--red)'}">${isPlus?'+':''}¥${diffMan}万</div>`;
-    h+=`</div></div>`;
-  }
-
-  const totalMan=Math.round(annualDiff/10000);
-  const isPlus=annualDiff>=0;
-  h+=`<div class="cum-total-line" style="color:${isPlus?'var(--food)':'var(--red)'}">12ヶ月の積み上げ: <span style="font-size:24px">${isPlus?'+':''}¥${totalMan}万</span></div>`;
-  h+=`<div class="cum-legend"><span><i style="background:var(--mt)"></i>現状のまま</span><span><i style="background:${isPlus?'var(--food)':'var(--red)'}"></i>改善後</span></div>`;
-  return h;
+  // 12-month chart with actual monthly data
+  document.getElementById('simCumChart').innerHTML=buildCumChart12(r.curCostRate,r.newCostRate);
 }
 
 // ===== ANALYSIS =====
@@ -407,11 +374,10 @@ function initAnalysis(){
   const tm=[{h:'17時',p:12.1},{h:'18時',p:27.4},{h:'19時',p:26.1},{h:'20時',p:15.9},{h:'21時',p:10.0},{h:'22時',p:5.9},{h:'23時',p:2.3},{h:'24時',p:0.3}];const tmx=Math.max(...tm.map(x=>x.p));
   document.getElementById('timeList').innerHTML=tm.map(x=>{const p=x.p/tmx*100;const c=x.p>20?'var(--ac)':x.p>10?'var(--blue)':'var(--mt)';return`<div class="arow"><div class="al">${x.h}</div><div class="av" style="color:${c}">${x.p}%</div></div><div class="abr" style="width:${p}%;background:${c}"></div>`}).join('');
   const wt=[{d:'月',a:143,b:158,c:150,e:80},{d:'火',a:135,b:149,c:120,e:115},{d:'水',a:147,b:151,c:118,e:132},{d:'木',a:156,b:153,c:143,e:154},{d:'金',a:205,b:234,c:161,e:212},{d:'土',a:193,b:208,c:195,e:157}];
-  const cl=(v,b)=>v/b<.8?'color:var(--red);font-weight:700':v/b>1.1?'color:var(--food);font-weight:700':'';
-  document.getElementById('wtbl').innerHTML=wt.map(x=>{const fs=x.d==='金'||x.d==='土'?'color:var(--ac);font-weight:700':'';return`<tr style="border-bottom:1px solid var(--border)"><td style="padding:6px;${fs}">${x.d}</td><td style="padding:6px;text-align:right">¥${x.a}K</td><td style="padding:6px;text-align:right;${cl(x.b,x.a)}">¥${x.b}K</td><td style="padding:6px;text-align:right;${cl(x.c,x.a)}">¥${x.c}K</td><td style="padding:6px;text-align:right;${cl(x.e,x.a)}">¥${x.e}K</td></tr>`}).join('');
-  const mo=[{m:'1月',v:349},{m:'2月',v:371},{m:'3月',v:404},{m:'4月',v:405},{m:'5月',v:397},{m:'6月',v:377},{m:'7月',v:439},{m:'8月',v:477},{m:'9月',v:389},{m:'10月',v:493},{m:'11月',v:434},{m:'12月',v:487}];const mmx=Math.max(...mo.map(x=>x.v));
+  document.getElementById('wtbl').innerHTML=wt.map(x=>{const fs=x.d==='金'||x.d==='土'?'color:var(--ac);font-weight:700':'';const cl=(v,b)=>v/b<.8?'color:var(--red);font-weight:700':v/b>1.1?'color:var(--food);font-weight:700':'';return`<tr style="border-bottom:1px solid var(--border)"><td style="padding:6px;${fs}">${x.d}</td><td style="padding:6px;text-align:right">¥${x.a}K</td><td style="padding:6px;text-align:right;${cl(x.b,x.a)}">¥${x.b}K</td><td style="padding:6px;text-align:right;${cl(x.c,x.a)}">¥${x.c}K</td><td style="padding:6px;text-align:right;${cl(x.e,x.a)}">¥${x.e}K</td></tr>`}).join('');
+  const mo=MONTHLY_SALES.map((v,i)=>({m:MONTH_NAMES[i],v}));const mmx=Math.max(...mo.map(x=>x.v));
   document.getElementById('monList').innerHTML=mo.map(x=>{const p=x.v/mmx*100;const c=x.v>450?'var(--ac)':'var(--blue)';return`<div class="arow"><div class="al">${x.m}</div><div class="av" style="color:${c}">¥${x.v}万</div></div><div class="abr" style="width:${p}%;background:${c}"></div>`}).join('');
-  const cr=[{l:'金土ダミー',v:.473,c:'var(--ac)'},{l:'月',v:.201,c:'var(--blue)'},{l:'日照時間',v:.053,c:'var(--mt)'},{l:'気温',v:.024,c:'var(--mt)'},{l:'降水量',v:-.036,c:'var(--mt)'}];
+  const cr=[{l:'金土ダミー',v:.473,c:'var(--ac)'},{l:'月',v:.201,c:'var(--blue)'},{l:'日照',v:.053,c:'var(--mt)'},{l:'気温',v:.024,c:'var(--mt)'},{l:'降水',v:-.036,c:'var(--mt)'}];
   document.getElementById('corrList').innerHTML=cr.map(x=>{const p=Math.abs(x.v)/.5*100;return`<div class="arow"><div class="al">${x.l}</div><div class="av" style="color:${x.c}">${x.v>=0?'+':''}${x.v.toFixed(3)}</div></div><div class="abr" style="width:${p}%;background:${x.c}"></div>`}).join('');
 }
 
